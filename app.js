@@ -85,7 +85,7 @@
   keyboard.appendChild(full);
 
   
-  keyboard.appendChild(el("p", { class: "kb-guide", "aria-hidden": "true" }, SECTIONS.map(function (s) {
+  document.getElementById("laptop").insertAdjacentElement("afterend", el("p", { class: "kb-guide", "aria-hidden": "true" }, SECTIONS.map(function (s) {
     return el("span", { class: "t-" + s.tone }, [el("b", { text: s.key }), " " + s.label]);
   })));
 
