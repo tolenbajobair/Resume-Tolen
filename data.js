@@ -12,7 +12,7 @@ window.PORTFOLIO = {
   github: "https://github.com/tolenbajobair",
 
   about: {
-    bio: "Software Engineering student at the University of Jeddah, where design thinking meets engineering precision. I work where UX/UI, Agile delivery and emerging tech meet, with hands-on experience in Figma, hackathons and real product workshops. I'm active in university tech communities, certified by PMI, Google, AWS, SDAIA and Udacity, and I like building things that actually work for the people using them.",
+    bio: "Software Engineering student passionate about technology, innovation, and creating meaningful digital solutions. Through leadership roles, hackathons, and university initiatives, I have developed skills in problem-solving, teamwork, and prototyping. I enjoy learning new technologies, taking on challenges, and contributing to projects that create real-world impact.",
     education: [["Bachelor of Software Engineering", "University of Jeddah", "2023 – present"]],
     languages: "Arabic (native), English (fluent)",
     skills: ["Figma", "UX/UI Design", "User Experience Research", "Agile Project Management",
