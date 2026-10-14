@@ -85,9 +85,12 @@
   keyboard.appendChild(full);
 
   
-  document.getElementById("laptop").insertAdjacentElement("afterend", el("p", { class: "kb-guide", "aria-hidden": "true" }, SECTIONS.map(function (s) {
-    return el("span", { class: "t-" + s.tone }, [el("b", { text: s.key }), " " + s.label]);
-  })));
+  var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+
+  document.getElementById("laptop").insertAdjacentElement("afterend", el("p", { class: "kb-guide", "aria-hidden": "true" },
+    [el("span", { class: "kb-guide-lead", text: "Tap a glowing key to open a section" })].concat(SECTIONS.map(function (s) {
+      return el("span", { class: "t-" + s.tone }, [el("b", { text: s.key }), " " + s.label]);
+    }))));
 
   function pressAnim(k) {
     (keyEls[k] || []).forEach(function (b) {
@@ -134,7 +137,7 @@
           el("p", { class: "home-role", text: P.role + ", " + P.school })
         ])
       ]),
-      el("p", { class: "prompt" }, ["Press a lit key to look around", el("span", { class: "caret", "aria-hidden": "true" })]),
+      el("p", { class: "prompt" }, [touch ? "Tap a glowing key or a button below" : "Press a lit key to look around", el("span", { class: "caret", "aria-hidden": "true" })]),
       el("div", { class: "home-menu" }, SECTIONS.map(function (s) {
         return el("button", { type: "button", class: "menu-btn t-" + s.tone, onclick: function () { go(s.id); } },
           [el("kbd", { text: s.key }), el("span", { text: s.long || s.label })]);
@@ -168,6 +171,7 @@
     var v = el("div", { class: "view t-" + s.tone }, [
       bar(tag(s), [homeBtn()]),
       el("h2", { class: "v-title" }, [s.long || s.label, el("span", { class: "count", text: String(s.list.length) })]),
+      el("p", { class: "list-hint", text: (touch ? "Tap" : "Select") + " an item to see the details" }),
       el("ul", { class: "rows" }, s.list.map(function (it) {
         return el("li", null, [el("button", { type: "button", class: "row", onclick: function () { detail(it.id); } }, [
           el("span", { class: "row-main" }, [
