@@ -88,9 +88,9 @@
   var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
 
   document.getElementById("laptop").insertAdjacentElement("afterend", el("p", { class: "kb-guide", "aria-hidden": "true" },
-    [el("span", { class: "kb-guide-lead", text: "Tap a glowing key to open a section" })].concat(SECTIONS.map(function (s) {
+    SECTIONS.map(function (s) {
       return el("span", { class: "t-" + s.tone }, [el("b", { text: s.key }), " " + s.label]);
-    }))));
+    })));
 
   function pressAnim(k) {
     (keyEls[k] || []).forEach(function (b) {
