@@ -141,7 +141,7 @@
           el("p", { class: "home-role", text: P.role + ", " + P.school })
         ])
       ]),
-      el("p", { class: "prompt" }, [touch ? "Tap a glowing key or a button below" : "Press a lit key to look around", el("span", { class: "caret", "aria-hidden": "true" })]),
+      el("p", { class: "prompt" }, [touch ? "Press a lit key to look around" : "Press a lit key to look around", el("span", { class: "caret", "aria-hidden": "true" })]),
       el("div", { class: "home-menu" }, SECTIONS.map(function (s) {
         return el("button", { type: "button", class: "menu-btn t-" + s.tone, onclick: function () { go(s.id); } },
           [el("kbd", { text: s.key }), el("span", { text: s.long || s.label })]);
@@ -281,11 +281,10 @@
   
   if (!reduceMotion) {
     keyboard.classList.add("booting");
-    setTimeout(function () { keyboard.classList.remove("booting"); }, 3000);
+    setTimeout(function () { keyboard.classList.remove("booting"); }, 3200);
   }
   var h = location.hash.slice(1);
   if (byId[h]) go(h);
   else if (itemIndex[h]) detail(h);
   else home();
 })();
-
