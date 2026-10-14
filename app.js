@@ -119,8 +119,12 @@
   function bar(left, right) {
     return el("div", { class: "bar" }, [left, el("div", { class: "bar-actions" }, right)]);
   }
-  function tag(s) {
-    return el("span", { class: "tag" }, [el("kbd", { text: s.key }), el("span", { text: s.long || s.label })]);
+  function heading(s, title, count) {
+    return bar(el("h2", { class: "tag" }, [
+      el("kbd", { text: s.key }),
+      el("span", { text: title }),
+      count != null ? el("span", { class: "tag-count", text: String(count) }) : null
+    ]), [homeBtn()]);
   }
   function homeBtn() {
     return el("button", { type: "button", class: "icon-btn", onclick: home, text: "Home" });
@@ -160,8 +164,7 @@
     dl.appendChild(el("dd", null, [el("div", { class: "chips" }, A.skills.map(function (c) { return el("span", { class: "chip", text: c }); }))]));
 
     setScreen(el("div", { class: "view t-gold" }, [
-      bar(tag(s), [homeBtn()]),
-      el("h2", { class: "v-title", text: "About me" }),
+      heading(s, "About me"),
       el("p", { class: "v-body", text: A.bio }),
       dl
     ]), "about");
@@ -169,8 +172,7 @@
 
   function list(s) {
     var v = el("div", { class: "view t-" + s.tone }, [
-      bar(tag(s), [homeBtn()]),
-      el("h2", { class: "v-title" }, [s.long || s.label, el("span", { class: "count", text: String(s.list.length) })]),
+      heading(s, s.long || s.label, s.list.length),
       el("p", { class: "list-hint", text: (touch ? "Tap" : "Select") + " an item to see the details" }),
       el("ul", { class: "rows" }, s.list.map(function (it) {
         return el("li", null, [el("button", { type: "button", class: "row", onclick: function () { detail(it.id); } }, [
@@ -236,8 +238,7 @@
       return li;
     }
     setScreen(el("div", { class: "view t-gold" }, [
-      bar(tag(s), [homeBtn()]),
-      el("h2", { class: "v-title", text: "Get in touch" }),
+      heading(s, "Get in touch"),
       el("ul", { class: "contact" }, [
         row("Email", el("a", { class: "v", href: "mailto:" + P.email, text: P.email }), P.email),
         row("Phone", el("a", { class: "v", href: P.phoneHref, text: P.phone }), P.phone),
@@ -287,3 +288,4 @@
   else if (itemIndex[h]) detail(h);
   else home();
 })();
+
