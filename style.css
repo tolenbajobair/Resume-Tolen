@@ -268,12 +268,10 @@ button.key { appearance: none; cursor: pointer; }
   .lid { width: 100%; }
   .bezel { padding: 10px 8px 12px; border-radius: 14px 14px 4px 4px; }
   .camera { top: 2px; }
-  .screen { aspect-ratio: auto; min-height: 440px; overflow: visible; padding: 18px 16px; }
+  .screen { aspect-ratio: auto; height: clamp(300px, calc(100svh - 360px), 560px); overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; }
   .deck {
     transform: none; padding: 8px; border-radius: 4px 4px 16px 16px;
-    position: sticky; z-index: 5;
-    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
-    box-shadow: 0 1px 0 #4a494d inset, 0 -12px 30px -6px rgba(12,12,14,.95), 0 16px 30px rgba(0,0,0,.8);
+    box-shadow: 0 1px 0 #4a494d inset, 0 16px 30px rgba(0,0,0,.8);
   }
   .trackpad { display: none; }
   .keyboard { padding: 6px; }
