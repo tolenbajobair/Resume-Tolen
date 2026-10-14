@@ -138,7 +138,13 @@
     var full = el("a", { class: "icon-btn full-link", href: encodeURI(it.cert), target: "_blank", rel: "noopener", text: "Full size ↗" });
     var img = el("img", { class: "cert-img", src: encodeURI(certImage(it.cert)), alt: "Certificate: " + it.title, loading: "eager" });
     var frame = el("a", { class: "cert-frame", href: encodeURI(it.cert), target: "_blank", rel: "noopener", "aria-label": "Open the full-size certificate" }, [img]);
+    // If the image isn't in certs/previews, try the other folders it may have been uploaded to.
+    var fallbacks = /\.pdf$/i.test(it.cert)
+      ? ["certs/certs/previews/", "previews/"].map(function (dir) { return dir + it.cert.split("/").pop().replace(/\.pdf$/i, ".jpg"); })
+      : [];
     img.addEventListener("error", function () {
+      var next = fallbacks.shift();
+      if (next) { img.src = encodeURI(next); return; }
       frame.replaceWith(el("p", { class: "v-body", text: "This certificate can't be shown here. Use Full size to open it." }));
     });
     setScreen(el("div", { class: "view cert-view t-" + s.tone }, [
