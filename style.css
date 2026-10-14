@@ -353,6 +353,9 @@ button.key { appearance: none; cursor: pointer; }
 .bar-actions { display: flex; align-items: center; gap: 6px; }
 .tag { display: inline-flex; align-items: center; gap: 10px; color: var(--tone); }
 .tag kbd { font: 600 1em var(--mono); color: var(--ink); background: var(--tone); border-radius: 5px; padding: 3px 8px; }
+.tag { font: 400 0.95rem/1.2 var(--mono); margin: 0; }
+.tag-count { font-size: 0.8em; color: var(--muted); margin-left: -4px; }
+.tag > span:not(.tag-count) { white-space: nowrap; }
 .pos { margin-right: 4px; font-variant-numeric: tabular-nums; }
 .icon-btn {
   appearance: none;
@@ -393,11 +396,12 @@ button.key { appearance: none; cursor: pointer; }
 .row-date { color: var(--muted); font-size: 0.82rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .row-go { color: var(--tone); font-size: 1.3rem; line-height: 1; }
 .row:active { background: rgba(240,235,226,0.05); }
-.list-hint { margin: -6px 0 0; color: var(--muted); font-size: 0.85rem; }
+.list-hint { margin: -6px 0 0; color: var(--muted); font-size: 0.66rem; }
+}
 @container (max-width: 520px) {
   .row { gap: 8px; }
   .row-go { font-size: 1.15rem; }
-  .list-hint { margin-top: -4px; font-size: 0.76rem; }
+  .list-hint { margin-top: -4px; font-size: 0.6rem; }
 }
 
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 12px 20px; margin: 4px 0 0; }
@@ -427,11 +431,13 @@ button.key { appearance: none; cursor: pointer; }
   display: grid; grid-template-columns: 6.5em minmax(0, 1fr) auto; align-items: center; gap: 12px;
   border-top: 1px solid var(--line); min-height: 52px; padding: 8px 0;
 }
+.contact li:first-child { border-top: 0; }
 .contact .k { color: var(--muted); font: 400 0.82rem var(--mono); }
 .contact .v { font-size: clamp(0.95rem, 2.2cqi, 1.1rem); overflow-wrap: anywhere; }
 @container (max-width: 520px) {
   .contact li { grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; }
-  .contact .k { grid-column: 1; }
+  .contact li:first-child { border-top: 0; }
+.contact .k { grid-column: 1; }
   .contact .v { grid-column: 1; }
   .contact .copy { grid-column: 2; grid-row: 1 / span 2; }
 }
@@ -457,6 +463,7 @@ button.key { appearance: none; cursor: pointer; }
   .view { gap: 10px; }
   .bar { padding-bottom: 8px; font-size: 0.74rem; }
   .tag kbd { padding: 2px 6px; }
+  .tag { font-size: 0.8rem; gap: 8px; }
   .icon-btn { min-height: 30px; min-width: 30px; padding: 0 9px; font-size: 0.78rem; }
   .v-title { font-size: 1.15rem; gap: 8px; }
   .v-meta { margin-top: -4px; font-size: 0.82rem; }
@@ -472,3 +479,4 @@ button.key { appearance: none; cursor: pointer; }
   .contact li { min-height: 44px; }
   .contact .v { font-size: 0.88rem; }
 }
+
