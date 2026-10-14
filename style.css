@@ -288,6 +288,7 @@ button.key { appearance: none; cursor: pointer; }
     color: var(--muted);
   }
   .kb-guide b { font-family: var(--mono); color: var(--tone); }
+  .kb-guide-lead { flex-basis: 100%; text-align: center; color: var(--paper); font-weight: 600; }
 }
 
 .hint { margin: 0; color: var(--muted); font-size: 0.92rem; text-align: center; }
@@ -391,9 +392,12 @@ button.key { appearance: none; cursor: pointer; }
 .row-org { color: var(--muted); font-size: 0.85rem; }
 .row-date { color: var(--muted); font-size: 0.82rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .row-go { color: var(--tone); font-size: 1.3rem; line-height: 1; }
+.row:active { background: rgba(240,235,226,0.05); }
+.list-hint { margin: -6px 0 0; color: var(--muted); font-size: 0.85rem; }
 @container (max-width: 520px) {
-  .row { grid-template-columns: minmax(0, 1fr) auto; }
-  .row-go { display: none; }
+  .row { gap: 8px; }
+  .row-go { font-size: 1.15rem; }
+  .list-hint { margin-top: -4px; font-size: 0.76rem; }
 }
 
 .facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 12px 20px; margin: 4px 0 0; }
