@@ -279,6 +279,15 @@
   });
 
   
+  var laptopEl = document.getElementById("laptop");
+  var lidEl = laptopEl.querySelector(".lid");
+  function markOpen() { laptopEl.classList.add("is-open"); }
+  if (reduceMotion || !lidEl) markOpen();
+  else {
+    lidEl.addEventListener("animationend", function (e) { if (e.target === lidEl) markOpen(); });
+    setTimeout(markOpen, 2500);
+  }
+
   if (!reduceMotion) {
     keyboard.classList.add("booting");
     setTimeout(function () { keyboard.classList.remove("booting"); }, 3200);
