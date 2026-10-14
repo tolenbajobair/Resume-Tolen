@@ -108,13 +108,61 @@
   }
 
 
+  // "push" adds a history entry so the phone's back gesture returns to the previous screen.
+  var historyMode = "replace";
   function setScreen(view, hash) {
     screen.innerHTML = "";
     screen.appendChild(view);
     screen.scrollTop = 0;
     var url = location.pathname + location.search + (hash ? "#" + hash : "");
-    try { history.replaceState(null, "", url); } catch (e) {}
+    var same = (location.hash.slice(1) || "") === (hash || "");
+    try {
+      if (historyMode === "push" && !same) history.pushState(null, "", url);
+      else if (historyMode !== "none") history.replaceState(null, "", url);
+    } catch (e) {}
+    historyMode = "push";
   }
+
+  // PDFs can't be shown reliably inside a page on phones, so each one has an image copy in certs/previews.
+  function certImage(path) {
+    if (/\.pdf$/i.test(path)) return "certs/previews/" + path.split("/").pop().replace(/\.pdf$/i, ".jpg");
+    return path;
+  }
+
+  function certView(id) {
+    var ref = itemIndex[id];
+    if (!ref || !ref.section.list[ref.i].cert) return detail(id);
+    var s = ref.section, it = s.list[ref.i];
+    markCurrent(s.id);
+    var back = el("button", { type: "button", class: "icon-btn", onclick: function () { detail(id); }, text: "‹ Back" });
+    var full = el("a", { class: "icon-btn full-link", href: encodeURI(it.cert), target: "_blank", rel: "noopener", text: "Full size ↗" });
+    var img = el("img", { class: "cert-img", src: encodeURI(certImage(it.cert)), alt: "Certificate: " + it.title, loading: "eager" });
+    var frame = el("a", { class: "cert-frame", href: encodeURI(it.cert), target: "_blank", rel: "noopener", "aria-label": "Open the full-size certificate" }, [img]);
+    img.addEventListener("error", function () {
+      frame.replaceWith(el("p", { class: "v-body", text: "This certificate can't be shown here. Use Full size to open it." }));
+    });
+    setScreen(el("div", { class: "view cert-view t-" + s.tone }, [
+      bar(back, [full]),
+      el("p", { class: "cert-caption", text: it.title + (it.org ? " · " + it.org : "") }),
+      frame
+    ]), id + "--cert");
+  }
+
+  function route(h) {
+    if (byId[h]) go(h);
+    else if (itemIndex[h]) detail(h);
+    else if (/--cert$/.test(h) && itemIndex[h.replace(/--cert$/, "")]) certView(h.replace(/--cert$/, ""));
+    else if (!h) home();
+    else return false;
+    return true;
+  }
+  window.addEventListener("popstate", function () {
+    var h = location.hash.slice(1);
+    if (h && !byId[h] && !itemIndex[h] && !itemIndex[h.replace(/--cert$/, "")]) return;
+    historyMode = "none";
+    route(h);
+    historyMode = "push";
+  });
 
   function bar(left, right) {
     return el("div", { class: "bar" }, [left, el("div", { class: "bar-actions" }, right)]);
@@ -212,7 +260,7 @@
     if (it.bullets) v.appendChild(el("ul", { class: "v-list" }, it.bullets.map(function (b) { return el("li", { text: b }); })));
 
     var acts = el("div", { class: "actions" });
-    if (it.cert) acts.appendChild(el("a", { class: "btn", href: encodeURI(it.cert), target: "_blank", rel: "noopener", text: "Open certificate" }));
+    if (it.cert) acts.appendChild(el("button", { type: "button", class: "btn", onclick: function () { certView(it.id); }, text: "Open certificate" }));
     if (it.link) acts.appendChild(el("a", { class: "btn", href: it.link, target: "_blank", rel: "noopener", text: it.linkLabel || "Open link" }));
     if (acts.childNodes.length) v.appendChild(acts);
 
@@ -292,8 +340,6 @@
     keyboard.classList.add("booting");
     setTimeout(function () { keyboard.classList.remove("booting"); }, 3200);
   }
-  var h = location.hash.slice(1);
-  if (byId[h]) go(h);
-  else if (itemIndex[h]) detail(h);
-  else home();
+  historyMode = "replace";
+  if (!route(location.hash.slice(1))) home();
 })();
