@@ -4,7 +4,7 @@ window.PORTFOLIO = {
   role: "Software Engineering Student",
   school: "University of Jeddah",
   location: "Jeddah, Saudi Arabia",
-  photo: "profile.jpg",
+  photo: "Me.jpg",
   email: "Tolen.bajobair@gmail.com",
   phone: "+966 570 678 905",
   phoneHref: "tel:+966570678905",
