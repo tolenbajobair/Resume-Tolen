@@ -57,6 +57,20 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; 
 .brand span { color: var(--gold); }
 .topnav a { color: var(--muted); font-size: 0.95rem; }
 .topnav a:hover { color: var(--paper); }
+.topnav { display: flex; align-items: center; gap: 18px; }
+.topnav .cv-btn {
+  color: var(--ink); background: var(--gold);
+  font-weight: 600; font-size: 0.88rem;
+  padding: 7px 14px; border-radius: 999px;
+}
+.topnav .cv-btn:hover { color: var(--ink); background: var(--gold-hi); }
+.brand, .topnav a { white-space: nowrap; }
+@media (max-width: 420px) {
+  .brand { font-size: 1rem; }
+  .topnav { gap: 12px; }
+  .topnav a { font-size: 0.85rem; }
+  .topnav .cv-btn { font-size: 0.8rem; padding: 6px 11px; }
+}
 
 .stage {
   max-width: 1080px;
@@ -483,6 +497,18 @@ button.key { appearance: none; cursor: pointer; }
   color: var(--ink);
 }
 .btn:hover { color: var(--ink); filter: brightness(1.08); }
+button.btn { border: 0; cursor: pointer; }
+.full-link { display: inline-flex; align-items: center; }
+.cert-caption { margin: -4px 0 0; color: var(--muted); font-size: 0.85rem; }
+.cert-view { height: 100%; }
+.cert-frame { flex: 1; min-height: 0; display: flex; align-items: flex-start; justify-content: center; }
+.cert-img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 6px; box-shadow: 0 0 0 1px var(--line), 0 10px 30px rgba(0,0,0,.45); }
+@container (max-width: 520px) {
+  .cert-caption { display: none; }
+  .cert-view { height: auto; }
+  .cert-frame { flex: none; }
+  .cert-img { width: 100%; max-height: none; }
+}
 
 .contact { list-style: none; margin: 0; padding: 0; display: grid; }
 .contact li {
