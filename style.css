@@ -317,23 +317,24 @@ button.key { appearance: none; cursor: pointer; }
 .kb-guide { display: none; }
 
 @container (max-width: 600px) {
-  .kb-row { --g: 1.3cqi; --u: calc((100cqi - 2.2cqi - 9 * var(--g)) / 10); }
-  .kb-full { gap: 1.3cqi; }
-  .kb-row.r0, .wide-only { display: none; }
+  .kb-full { gap: 0.9cqi; }
+  .kb-row { --g: 0.9cqi; --u: calc((100cqi - 2.2cqi - 14 * var(--g)) / 15); }
   .key {
-    width: calc(var(--wn, var(--w)) * var(--u) + (var(--wn, var(--w)) - 1) * var(--g));
-    height: calc(var(--u) * 0.95);
-    border-radius: 1.6cqi;
-    padding: 1cqi;
+    height: calc(var(--u) * 0.92);
+    border-radius: 1.2cqi;
+    padding: 0;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 0 #29292c inset, 0 0.8cqi 0 #070708;
+    box-shadow: 0 1px 0 #29292c inset, 0 0.6cqi 0 #070708;
   }
-  .key .cap { font-size: 4.2cqi; }
-  .key .cap-sm { font-size: 2.6cqi; }
+  .key .cap { font-size: 3cqi; }
+  .key .cap-sm { font-size: 1.9cqi; letter-spacing: -0.02em; }
   .key.lit .lbl { display: none; }
-  .key.lit::after { box-shadow: 0 0 0 1px var(--tone) inset, 0 0 4cqi -0.4cqi var(--tone); }
-  .key.lit.is-down, .key.lit:active { transform: translateY(0.7cqi); box-shadow: 0 1px 0 #2d2d30 inset, 0 0.1cqi 0 #070708; }
+  .key.lit .cap { font-size: 3.6cqi; }
+  .key.lit::after { box-shadow: 0 0 0 1px var(--tone) inset, 0 0 3.5cqi -0.3cqi var(--tone); }
+  .key.lit::before { content: ""; position: absolute; inset: -9px -7px; }
+  .key.lit { z-index: 1; }
+  .key.lit.is-down, .key.lit:active { transform: translateY(0.5cqi); box-shadow: 0 1px 0 #2d2d30 inset, 0 0.1cqi 0 #070708; }
 }
 
 @media (max-width: 640px) {
