@@ -14,7 +14,7 @@ window.PORTFOLIO = {
   about: {
     bio: "Hi, I’m Tolen. I study Software Engineering at the University of Jeddah, and I care a lot about how technology feels to the people using it. That’s what drew me to UX/UI design, and it’s what I explored during my co-op with flyadeal’s Product team. When I’m not studying, you’ll usually find me at a hackathon, a workshop, or helping run an event on campus. I learn fastest by doing, and I’m always up for a new challenge.",
     education: [["Bachelor of Software Engineering", "University of Jeddah", "2023 – present"]],
-    languages: "Arabic - native) | English - fluent",
+    languages: "Arabic - native | English - fluent",
     skills: ["Figma", "UX/UI Design", "User Experience Research", "Agile Project Management",
              "Scrum", "Java", "SQL", "HTML", "CSS", "JavaScript", "Problem Solving", "Team Leadership"]
   },
