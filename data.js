@@ -12,9 +12,9 @@ window.PORTFOLIO = {
   github: "https://github.com/tolenbajobair",
 
   about: {
-    bio: "Software Engineering student passionate about technology, innovation, and creating meaningful digital solutions. Through leadership roles, hackathons, and university initiatives, I have developed skills in problem-solving, teamwork, and prototyping. I enjoy learning new technologies, taking on challenges, and contributing to projects that create real-world impact.",
+    bio: "Hi, I’m Tolen. I study Software Engineering at the University of Jeddah, and I care a lot about how technology feels to the people using it. That’s what drew me to UX/UI design, and it’s what I explored during my co-op with flyadeal’s Product team. When I’m not studying, you’ll usually find me at a hackathon, a workshop, or helping run an event on campus. I learn fastest by doing, and I’m always up for a new challenge.",
     education: [["Bachelor of Software Engineering", "University of Jeddah", "2023 – present"]],
-    languages: "Arabic (native), English (fluent)",
+    languages: "Arabic - native) | English - fluent",
     skills: ["Figma", "UX/UI Design", "User Experience Research", "Agile Project Management",
              "Scrum", "Java", "SQL", "HTML", "CSS", "JavaScript", "Problem Solving", "Team Leadership"]
   },
@@ -62,32 +62,32 @@ window.PORTFOLIO = {
     {
       id: "data-science-hackathon",
       title: "Data Science Hackathon", date: "May 2026",
-      body: "Competed in a data science hackathon, applying machine learning and data analysis to real-world problems against the clock."
+      body: "Took part in a data science hackathon where teams were given logistics datasets and challenged to find practical solutions. My team analyzed the data, built predictive models, and used the results to propose a solution that makes the journey smoother for pilgrims visiting Makkah.."
     },
     {
       id: "ai-innovation-bootcamp",
       title: "AI Innovation Bootcamp", date: "May 2026",
-      body: "An AI-focused bootcamp on innovation, emerging technologies and real-world AI applications.",
+      body: "During an AI-focused bootcamp on innovation and real-world AI applications, my team designed and built Groc, a grocery budgeting app powered by AI tools that helps users plan their shopping and stay within budget. Our project won 3rd place.",
       cert: "certs/ai innovation bootcamp.pdf"
     },
       {
       id: "interfacepath-workshop",
       title: "InterfacePath UX/UI Workshop", date: "Dec 2025",
-      body: "Hands-on Figma practice, and helped run a rapid prototyping mini-contest at the EGVR Club.",
+      body: "As vice leader of the PR committee at the EGVR Club, I was part of the team that brought the InterfacePath UX/UI Workshop to life, and I secured its sponsors. The event gave students hands-on Figma practice, and I also competed in its rapid prototyping mini-contest.",
       cert: "certs/InterfacePath_UX_UI_Workshop_Certificate.png"
     },
       {
       id: "vr-workshop",
       title: "VR Workshop", date: "Nov 2025",
       org: "EGVR Club",
-      body: "Helped organize and deliver a workshop introducing students to VR concepts, fundamentals and modern applications.",
+      body: "As vice leader of the PR committee at the EGVR Club, I helped organize and deliver a workshop introducing students to VR concepts, fundamentals and modern applications, and secured its sponsors.",
       cert: "certs/cert-vr-workshop.JPG"
     },
      {
       id: "hajj-logistics-hackathon",
       title: "Hajj Logistics Hackathon", date: "Nov 2025",
       org: "With the Ministry of Hajj & Umrah",
-      body: "Worked in a team under time pressure to propose logistics solutions for future Hajj operations. Sharpened teamwork, critical thinking and problem solving."
+      body: "In a hackathon with the Ministry of Hajj & Umrah, my team proposed a rewards program for pilgrims through the Nusuk platform to ease crowding and improve logistics for future Hajj seasons."
     },
     {
       id: "digital-innovation-bootcamp",
